@@ -25,6 +25,7 @@ public class EventoService {
 
     }
 
+
     //Cerca evento per ID
     public Evento findById(long id){
         return this.eventoRepository.findById(id).orElseThrow(()-> new NotFoundException(id));
@@ -54,6 +55,13 @@ public class EventoService {
         foundEvento.setLuogo(updateEvento.luogo());
         foundEvento.setUser(foundUser);
         return this.eventoRepository.save(foundEvento);
+    }
+
+     //Prenotazione Evento
+    public void prenotazioneEvento(long id, PrenotaEventoDTO posti){
+        Evento evento = this.findById(id);
+        evento.setPosti(evento.getPosti() - posti.numeroPosti());
+        this.eventoRepository.save(evento);
     }
 
 }
