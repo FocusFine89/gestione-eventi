@@ -16,6 +16,6 @@ public record UserDTO(
         String password,
         @NotEmpty(message = "Il ruolo non può essere vuoto")
         @Size(min = 4, message = "Imposta come ruolo User o Organizzatore")
-        String role
+        Role role
 ) {
 }
