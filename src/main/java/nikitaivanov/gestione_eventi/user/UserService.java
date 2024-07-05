@@ -24,7 +24,7 @@ public class UserService {
     }
 
     //Cerca per id
-    public User findByid(long id){
+    public User findById(long id){
         return userRepository.findById(id).orElseThrow(()-> new NotFoundException(id));
     }
 

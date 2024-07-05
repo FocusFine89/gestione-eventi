@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @JsonIgnoreProperties({ "authorities", "enabled", "accountNonExpired", "credentialsNonExpired", "accountNonLocked", "password", "role"})
 public class User implements UserDetails {
     //Attributi
@@ -100,9 +100,6 @@ public class User implements UserDetails {
         return true;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     @Override
     public String toString() {
