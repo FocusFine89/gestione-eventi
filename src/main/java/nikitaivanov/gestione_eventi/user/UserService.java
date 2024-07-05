@@ -1,10 +1,15 @@
 package nikitaivanov.gestione_eventi.user;
 
+import nikitaivanov.gestione_eventi.evento.Evento;
+import nikitaivanov.gestione_eventi.evento.EventoRepository;
+import nikitaivanov.gestione_eventi.evento.EventoService;
+import nikitaivanov.gestione_eventi.evento.PrenotaEventoDTO;
 import nikitaivanov.gestione_eventi.exceptions.BadRequestException;
 import nikitaivanov.gestione_eventi.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Service
 public class UserService {
@@ -32,5 +37,7 @@ public class UserService {
     public User findByEmail(String email){
         return userRepository.findByEmail(email).orElseThrow(()-> new NotFoundException(email));
     }
+
+
 
 }
