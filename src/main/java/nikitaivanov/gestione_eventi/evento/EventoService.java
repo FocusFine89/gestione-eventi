@@ -43,4 +43,17 @@ public class EventoService {
         return this.eventoRepository.findAll(pageable);
     }
 
+    //Update Evento
+    public Evento findByIdAndUpdate(long id, EventoDTO updateEvento){
+        Evento foundEvento = this.findById(id);
+        User foundUser = this.userService.findById(updateEvento.OrganizzatoreId());
+        foundEvento.setData(updateEvento.data());
+        foundEvento.setDescrizione(updateEvento.descrizione());
+        foundEvento.setPosti(updateEvento.posti());
+        foundEvento.setTitolo(updateEvento.titolo());
+        foundEvento.setLuogo(updateEvento.luogo());
+        foundEvento.setUser(foundUser);
+        return this.eventoRepository.save(foundEvento);
+    }
+
 }

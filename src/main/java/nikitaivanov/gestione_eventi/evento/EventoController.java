@@ -35,4 +35,11 @@ public class EventoController {
         this.eventoService.deleteById(id);
     }
 
+    //Modifica Evento
+    @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ORGANIZZATORE')")
+    public Evento updateEvento(@PathVariable long id, @RequestBody @Validated EventoDTO evento){
+        return this.eventoService.findByIdAndUpdate(id,evento);
+    }
+
 }
