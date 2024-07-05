@@ -17,13 +17,11 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Enumerated(EnumType.STRING)
     private Role role;
     private String name;
     private String email;
     private String password;
-
-    // One to many con evento ()
-
 
 
     //Costruttori
