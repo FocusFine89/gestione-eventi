@@ -16,7 +16,7 @@ public class EventoService {
 
     //Creazione Evento
     public Evento saveEvento(long id, EventoDTO newEvento){
-        User organizzatore = this.userService.findByid(id);
+        User organizzatore = this.userService.findById(id);
         Evento evento = new Evento(newEvento.titolo(), newEvento.descrizione(), newEvento.data(), newEvento.luogo(), newEvento.posti(), organizzatore);
         return eventoRepository.save(evento);
 
