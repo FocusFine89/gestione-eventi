@@ -3,6 +3,7 @@ package nikitaivanov.gestione_eventi.security;
 import nikitaivanov.gestione_eventi.exceptions.UnauthorizedException;
 import nikitaivanov.gestione_eventi.user.User;
 import nikitaivanov.gestione_eventi.user.UserDTO;
+import nikitaivanov.gestione_eventi.user.UserLoginDTO;
 import nikitaivanov.gestione_eventi.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,7 +21,7 @@ public class AuthService {
     private PasswordEncoder bCrypt;
 
 
-    public String loginAndCreateToken(UserDTO payload){
+    public String loginAndCreateToken(UserLoginDTO payload){
         User user = this.userService.findByEmail(payload.email());
         if (bCrypt.matches(payload.password(), user.getPassword())){
             return jwtTools.createToken(user);
