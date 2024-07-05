@@ -14,8 +14,6 @@ public record UserDTO(
         @NotEmpty(message = "Non puoi lasciare la password vuota")
         @Size(min = 8, message = "La password deve avere almeno 8 caratteri")
         String password,
-        @NotEmpty(message = "Il ruolo non può essere vuoto")
-        @Size(min = 4, message = "Imposta come ruolo User o Organizzatore")
         Role role
 ) {
 }
